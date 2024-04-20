@@ -1,60 +1,5 @@
-// import 'package:flutter/material.dart';
-
-// class BottomNavigationBar extends StatefulWidget {
-//   const BottomNavigationBar({super.key});
-
-//   @override
-//   State<BottomNavigationBar> createState() => _BottomNavigationBarState();
-// }
-
-// class _BottomNavigationBarState extends State<BottomNavigationBar> {
-//   int _selectedIndex = 0;
-//   void _onItemTapped(int index) {
-//     setState(() {
-//       _selectedIndex = index;
-//     });
-//   }
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body:IndexedStack(
-//         index: _selectedIndex,
-//         children: [
-//           FarHomepage(),
-
-//         ],
-//       ),
-//       bottomNavigationBar: const BottomNavigationBar(
-
-//        [
-//       BottomNavigationBarItem(
-//         icon: ImageIcon(AssetImage('lib/Images/Home.png')),
-//         label: 'Home',
-
-//       ),
-//       BottomNavigationBarItem(
-//         icon: ImageIcon(AssetImage('lib/Images/Ai.png')),
-//         label: 'AI',
-//       ),
-//       BottomNavigationBarItem(
-//         icon: ImageIcon(AssetImage('lib/Images/logo message.png')),
-//         label: 'Message',
-//       ),
-//       BottomNavigationBarItem(
-//         icon: ImageIcon(AssetImage('lib/Images/notification.png')),
-//         label: 'Notifications',
-//       ),
-//       BottomNavigationBarItem(
-//         icon: ImageIcon(AssetImage('lib/Images/Users.png')),
-//         label: 'Profile',
-//       ),
-//      ],
-//      ),
-//     );
-//   }
-// }
-
 import 'package:agron/ai.dart';
+import 'package:agron/buyerhomepage.dart';
 import 'package:agron/cart.dart';
 import 'package:agron/farhomepage.dart';
 import 'package:agron/message.dart';
@@ -64,11 +9,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 
-class ScreenMainPage extends StatelessWidget {
-  ScreenMainPage({super.key});
+class ScreenMainPage1 extends StatelessWidget {
+  ScreenMainPage1({super.key});
   final _pages = [
-    const FarHomepage(),
-     AiPage(),
+    const BuyerHomePage(),
+     const CartPage(),
     const Messagepage(),
     const NotificationPage(),
     const ProfilePage()
@@ -101,7 +46,6 @@ class ScreenMainPage extends StatelessWidget {
             ),
             child: BottomNavWidget()),
       ),
-      
     );
   }
 }
@@ -139,9 +83,9 @@ class BottomNavWidget extends StatelessWidget {
             BottomNavigationBarItem(
               icon: CircleAvatar(
                 radius: 10,
-                child: Container(decoration: BoxDecoration(image: DecorationImage(image: AssetImage('lib/Images/Ai.png'))),),
+                child: Container(decoration: BoxDecoration(image: DecorationImage(image: AssetImage('lib/Images/Cart.png'))),),
                  ),
-              label: "Ai",
+              label: "Cart",
             ),
             BottomNavigationBarItem(
               icon: CircleAvatar(

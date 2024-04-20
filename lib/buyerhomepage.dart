@@ -1,16 +1,17 @@
+import 'package:agron/buyerproductdetails.dart';
 import 'package:agron/productdetails.dart';
 import 'package:flutter/material.dart';
 //import firestore
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class ProductPage extends StatefulWidget {
-  const ProductPage({super.key});
+class BuyerHomePage extends StatefulWidget {
+  const BuyerHomePage({super.key});
 
   @override
-  State<ProductPage> createState() => _ProductPageState();
+  State<BuyerHomePage> createState() => _BuyerHomePageState();
 }
 
-class _ProductPageState extends State<ProductPage> {
+class _BuyerHomePageState extends State<BuyerHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -160,7 +161,7 @@ class _ProductPageState extends State<ProductPage> {
                           //get docid
                           String docid = document.id;
                      Navigator.push(context, // Current context
-      MaterialPageRoute(builder: (context) => ProductDetails(
+      MaterialPageRoute(builder: (context) => BuyerProductDetails(
         docid: docid,
       )),
       );

@@ -1,4 +1,7 @@
 import 'package:agron/bottomnavbar.dart';
+import 'package:agron/bottomnavbar2.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class OptionPage extends StatefulWidget {
@@ -66,11 +69,24 @@ class _OptionPageState extends State<OptionPage> {
                        ),
                      ),
                     ),
-                   onTap:() {
-                     Navigator.push(context, // Current context
-      MaterialPageRoute(builder: (context) => ScreenMainPage()),
-      );
-                   }, 
+                   onTap:() async {
+                    // Get instance of FirebaseFirestore and FirebaseAuth
+                    final firestoreInstance = FirebaseFirestore.instance;
+                    final firebaseUser = FirebaseAuth.instance.currentUser;
+                  
+                    if (firebaseUser != null) {
+                      // Get user's email
+                      String? email = firebaseUser.email;
+                  
+                      // Create a new document in the 'Option' collection
+                      await firestoreInstance.collection('Option').doc(email).set({
+                        'email': email,
+                        'option': 'farmer',
+                      });
+                  
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ScreenMainPage()));
+                    }
+                  },
            ),
            const SizedBox(height: 70,),
            GestureDetector(
@@ -93,11 +109,24 @@ class _OptionPageState extends State<OptionPage> {
                        ),
                      ),
                     ),
-                   onTap:() {
-                     Navigator.push(context, // Current context
-      MaterialPageRoute(builder: (context) => OptionPage()),
-      );
-                   }, 
+                  onTap:() async {
+                    // Get instance of FirebaseFirestore and FirebaseAuth
+                    final firestoreInstance = FirebaseFirestore.instance;
+                    final firebaseUser = FirebaseAuth.instance.currentUser;
+                  
+                    if (firebaseUser != null) {
+                      // Get user's email
+                      String? email = firebaseUser.email;
+                  
+                      // Create a new document in the 'Option' collection
+                      await firestoreInstance.collection('Option').doc(email).set({
+                        'email': email,
+                        'option': 'buyer',
+                      });
+                  
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ScreenMainPage1()));
+                    }
+                  },
            ),
            const SizedBox(height: 25,),
             Text('Role  you select cannot be changed after!',style: TextStyle(color: Colors.white,fontSize: 14,

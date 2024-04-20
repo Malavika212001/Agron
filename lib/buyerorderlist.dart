@@ -1,16 +1,18 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 //import firestore
 import 'package:cloud_firestore/cloud_firestore.dart';
+//import firebase auth
+import 'package:firebase_auth/firebase_auth.dart';
 
-class OrderPage extends StatefulWidget {
-  const OrderPage({super.key});
+class BuyerOrderList extends StatefulWidget {
+  String docid;
+  BuyerOrderList({super.key, required this.docid});
 
   @override
-  State<OrderPage> createState() => _OrderPageState();
+  State<BuyerOrderList> createState() => _BuyerOrderListState();
 }
 
-class _OrderPageState extends State<OrderPage> {
+class _BuyerOrderListState extends State<BuyerOrderList> {
   final firestoreInstance = FirebaseFirestore.instance;
   final firebaseUser = FirebaseAuth.instance.currentUser;
 String? email;
@@ -33,8 +35,8 @@ void someMethod() {
       end: Alignment.bottomRight,
       colors: [Color(0xFF013220), Colors.black, Colors.white.withOpacity(0)],
     ),
-  ),
-  child: SafeArea(
+    ),
+    child: SafeArea(
     child: Column(
       children: [
         Padding(
@@ -169,23 +171,6 @@ void someMethod() {
                                         //   //   );
                                         //   // },
                                         // ),
-                                         Container(
-                                            height: 50,
-                                            width: 66,
-                                            decoration: BoxDecoration(
-                                              color: Color(0xffF3DD19),
-                                              borderRadius: BorderRadius.circular(10),
-                                            ),
-                                            child: Center(
-                                              child: Text(
-                                                'Complete Order',
-                                                style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
                                       ],
                                     ),
                                   ),
@@ -209,7 +194,7 @@ void someMethod() {
           ]
     ),
     ),
-      ),
+    )
     );
   }
 }

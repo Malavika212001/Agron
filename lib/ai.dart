@@ -219,19 +219,60 @@ class _AiPageState extends State<AiPage> {
               child: Stack(
                 children: [
                   
-                  Center(
-                    child: Image.asset(
-                      'lib/Images/Frame 1.png',
-                      width: 100,
-                      height: 100,
-                      // Adjust width and height according to your requirements
-                    ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Center(
+                        child: Image.asset(
+                          'lib/Images/Frame 1.png',
+                          width: 100,
+                          height: 100,
+                          // Adjust width and height according to your requirements
+                        ),
+                        
+                      ),
+                      Center(child: Text("welcome to \n \t\t\t\tAgron",style: TextStyle(color: Colors.white,fontSize: 40),)),
+
+                    ],
                   ),
-                  Center(
-                    // child: Text(
-                    //   'This is your home page',
+                   SizedBox(height: 10,),
+                   
+                    //  Text(
+                    //    'Welcome to',
+                    //     style: TextStyle(
+                    //      color: Colors.white,
+                    //      fontSize: 48,
+                    //      fontFamily: 'Alata',
+                    //      fontWeight: FontWeight.w400,
+                    //      height: 0,
+                    //    ),
                     // ),
-                  ),
+                    // Positioned(
+                    //   top: 359,
+                    //   child: SizedBox(
+                    //     width: 360,
+                    //     height: 100,
+                    //     child: Text.rich(
+                    //       TextSpan(
+                    //         children: [
+                    //           TextSpan(
+                    //             text: 'Welcome to \n Agron',
+                    //             style: TextStyle(
+                    //               color: Colors.white,
+                    //               fontSize: 48,
+                    //               fontFamily: 'Alata',
+                    //               fontWeight: FontWeight.w400,
+                    //               height: 0,
+                    //             ),
+                    //           ),
+                              
+                    //         ],
+                    //       ),
+                    //       textAlign: TextAlign.center,
+                    //     ),
+                    //   ),
+                    // )
+                  
                 ],
               ),
             ),

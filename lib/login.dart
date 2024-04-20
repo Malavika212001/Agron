@@ -1,7 +1,11 @@
 import 'package:agron/bottomnavbar.dart';
+import 'package:agron/bottomnavbar2.dart';
+import 'package:agron/buyerhomepage.dart';
 import 'package:agron/components/my_textfield.dart';
+import 'package:agron/farhomepage.dart';
 //import 'package:agron/farhomepage.dart';
 import 'package:agron/signin.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -93,50 +97,88 @@ class _loginpageState extends State<loginpage> {
                ),
              ),
              const SizedBox(height: 30,),
-             GestureDetector(
-               child: Container(
-                       height: 50,width: 350,
-                       padding: EdgeInsets.symmetric(horizontal: 25),
-                       margin:  const EdgeInsets.symmetric(horizontal: 25),
-                       decoration: BoxDecoration(
-                         color: Colors.white,
-                         borderRadius: BorderRadius.circular(40),
-                         ),
-                       child:  const Center(
-                         child: Text(
-                           'Sign In',
+        //      GestureDetector(
+        //        child: Container(
+        //                height: 50,width: 350,
+        //                padding: EdgeInsets.symmetric(horizontal: 25),
+        //                margin:  const EdgeInsets.symmetric(horizontal: 25),
+        //                decoration: BoxDecoration(
+        //                  color: Colors.white,
+        //                  borderRadius: BorderRadius.circular(40),
+        //                  ),
+        //                child:  const Center(
+        //                  child: Text(
+        //                    'Sign In',
+        //                     style: TextStyle(
+        //                     color: Colors.black,
+        //                     fontWeight: FontWeight.bold,
+        //                     fontSize: 20
+        //                    ),
+        //                  ),
+        //                ),
+        //               ),
+        //              onTap:() async {
+        // //                Navigator.push(context, // Current context
+        // // MaterialPageRoute(builder: (context) => ScreenMainPage()),
+        // // );
+        // try {
+        //   final UserCredential user = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        //     email: emailcontroller.text,
+        //     password: passwordcontroller.text,
+        //   );
+        //   // If the sign in was successful, navigate to the main screen
+        //   Navigator.push(
+        //     context,
+        //     MaterialPageRoute(builder: (context) => ScreenMainPage()),
+        //   );
+        // } catch (e) {
+        //   // If the sign in was not successful, show a snackbar with an error message
+        //   ScaffoldMessenger.of(context).showSnackBar(
+        //     SnackBar(
+        //       content: Text('Username or password is wrong'),
+        //     ),
+        //   );
+        // }
+        //              }, 
+        //      ),
+        SizedBox(
+      width: 350,height: 50,
+          child: ElevatedButton(
+            onPressed: () async {
+                final UserCredential user = await FirebaseAuth.instance.signInWithEmailAndPassword(
+            email: emailcontroller.text,
+            password: passwordcontroller.text,
+          );
+              final firestoreInstance = FirebaseFirestore.instance;
+              final firebaseUser = FirebaseAuth.instance.currentUser;
+          
+              if (firebaseUser != null) {
+                String? email = firebaseUser.email;
+          
+                if (email != null) {
+          DocumentSnapshot doc = await firestoreInstance.collection('Option').doc(email).get();
+          String option = (doc.data() as Map<String, dynamic>)['option'] ?? '';
+          
+          if (option == 'farmer') {
+            if (mounted) {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ScreenMainPage()));
+            }
+          } else {
+            if (mounted) {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ScreenMainPage1()));
+            }
+          }
+                }
+              }
+            },
+            child: const Text('Sign In',
                             style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
                             fontSize: 20
                            ),
-                         ),
-                       ),
-                      ),
-                     onTap:() async {
-        //                Navigator.push(context, // Current context
-        // MaterialPageRoute(builder: (context) => ScreenMainPage()),
-        // );
-        try {
-          final UserCredential user = await FirebaseAuth.instance.signInWithEmailAndPassword(
-            email: emailcontroller.text,
-            password: passwordcontroller.text,
-          );
-          // If the sign in was successful, navigate to the main screen
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => ScreenMainPage()),
-          );
-        } catch (e) {
-          // If the sign in was not successful, show a snackbar with an error message
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('Username or password is wrong'),
-            ),
-          );
-        }
-                     }, 
-             ),
+                         ),),
+          ),
             const SizedBox(height: 10,),
            GestureDetector(
             child: Text('Don\'t have an account?',style: TextStyle(color: Colors.white),),
