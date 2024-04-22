@@ -250,6 +250,17 @@ firestoreInstance.collection(email!).doc(widget.docid).set({
         });
    
   }
+  if (productData != null) {
+    String? name = productData['name'];
+    String? price = productData['price'];
+    String? image = productData['image'];
+firestoreInstance.collection('malu@gmail.com').doc(widget.docid).set({
+          'name': name,
+          'price': price,
+          'image': image,
+        });
+   
+  }
         
         Navigator.push(context, MaterialPageRoute(builder: (context) => CartPage()));
       }

@@ -64,7 +64,7 @@ void someMethod() {
           ),
           StreamBuilder(
                     stream: FirebaseFirestore.instance
-                        .collection(email!)
+                        .collection('malu@gmail.com')
                         .snapshots(),
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
@@ -176,12 +176,15 @@ void someMethod() {
                                               color: Color(0xffF3DD19),
                                               borderRadius: BorderRadius.circular(10),
                                             ),
-                                            child: Center(
-                                              child: Text(
-                                                'Complete Order',
-                                                style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontWeight: FontWeight.bold,
+                                            child: Padding(
+                                              padding: const EdgeInsets.symmetric(horizontal: 4),
+                                              child: Center(
+                                                child: Text(
+                                                  'Complete Order',
+                                                  style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
                                                 ),
                                               ),
                                             ),

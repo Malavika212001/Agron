@@ -148,7 +148,16 @@ void someMethod() {
                                                 'address': addresscontroller.text,
                                                 'phone': phonecontroller.text,
                                                   });
+                                                  FirebaseFirestore.instance.collection('malu@gmail.com').doc('Address').set({
+                                                  'name': namecontroller.text,
+                                                  'address': addresscontroller.text,
+                                                  'phone': phonecontroller.text,
+                                                  });
                                                   FirebaseFirestore.instance.collection(email!).doc(widget.docid).update({
+                                               'weight': weightcontroller.text,
+                                                },
+                                                );
+                                                 FirebaseFirestore.instance.collection('malu@gmail.com').doc(widget.docid).update({
                                                'weight': weightcontroller.text,
                                                 },
                                                 );

@@ -57,6 +57,7 @@
 import 'package:agron/ai.dart';
 import 'package:agron/cart.dart';
 import 'package:agron/farhomepage.dart';
+import 'package:agron/farmerprofile.dart';
 import 'package:agron/message.dart';
 import 'package:agron/notification.dart';
 import 'package:agron/profile.dart';
@@ -71,7 +72,7 @@ class ScreenMainPage extends StatelessWidget {
      AiPage(),
     const Messagepage(),
     const NotificationPage(),
-    const ProfilePage()
+    const FarmerProfilePage()
   ];
 
   @override
